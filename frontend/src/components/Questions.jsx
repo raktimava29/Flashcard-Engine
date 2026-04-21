@@ -8,7 +8,7 @@ function Questions() {
   const [waiting, setWaiting] = useState(false);
   const [ratingsMap, setRatingsMap] = useState({});
 
-  const BACKEND_URL = "http://127.0.0.1:8000";
+  const BACKEND_URL = "https://flashcard-engine-5zbb.onrender.com";
 
   const loadCard = async () => {
     setLoading(true);
