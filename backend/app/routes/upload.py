@@ -1,5 +1,6 @@
 from fastapi import APIRouter, UploadFile, File
 from app.utils.pdf_parser import extract_text
+from app.services.flashcard_service import generate_flashcards
 
 router = APIRouter()
 
@@ -9,7 +10,9 @@ async def upload_pdf(file: UploadFile = File(...)):
     
     extracted_text = extract_text(contents)
     
+    flashcards = generate_flashcards(extracted_text)
+    
     return{
-        "filename": file.filename,
-        "content_type": extracted_text[:1000]
+        "total_cards": len(flashcards),
+        "cards": flashcards[:5]
     }
