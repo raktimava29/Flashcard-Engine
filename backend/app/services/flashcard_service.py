@@ -123,12 +123,8 @@ def initialize_cards(cards):
 
 def get_due_card(cards):
     now = time.time()
-    
-    print("NEXT REVIEWS:", [c["next_review"] for c in cards])
 
     due_cards = [c for c in cards if c["next_review"] <= now]
-
-    print("DUE CARDS COUNT:", len(due_cards))
 
     if not due_cards:
         return None
@@ -162,6 +158,6 @@ def generate_flashcards(text):
     final_cards = deduplicate_cards(all_cards)
     initialized_cards = initialize_cards(final_cards)
     
-    FLASHCARDS_STORE = initialized_cards[:5]
+    FLASHCARDS_STORE = initialized_cards[:12]
     LAST_SERVED_CARD = None
     return initialized_cards

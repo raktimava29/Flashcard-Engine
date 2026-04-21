@@ -4,15 +4,14 @@ function Questions() {
   const [card, setCard] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [feedback, setFeedback] = useState("");
+  // const [feedback, setFeedback] = useState("");
   const [waiting, setWaiting] = useState(false);
-  const [ratingsMap, setRatingsMap] = useState({});
 
   const BACKEND_URL = "https://flashcard-engine-5zbb.onrender.com";
 
   const loadCard = async () => {
     setLoading(true);
-    setFeedback("");
+    // setFeedback("");
     setWaiting(false);
 
     try {
@@ -25,13 +24,6 @@ function Questions() {
       } else {
         setCard(data);
         setShowAnswer(false);
-
-        const prevRating = ratingsMap[data.question];
-        if (prevRating) {
-          console.log(`🔁 Repeated card | Previous rating: ${prevRating}`);
-        } else {
-          console.log("🆕 First time seeing this card");
-        }
       }
     } catch (err) {
       console.error("❌ Error in loadCard:", err);
@@ -50,14 +42,9 @@ function Questions() {
         body: JSON.stringify({ rating }),
       });
 
-      const data = await res.json();
+      await res.json();
 
-      setRatingsMap(prev => ({
-        ...prev,
-        [card.question]: rating
-      }));
-
-      setFeedback(`Marked as ${rating.toUpperCase()}`);
+      // setFeedback(`Marked as ${rating.toUpperCase()}`);
       loadCard();
     } catch (err) {
       console.error(err);
@@ -70,7 +57,7 @@ function Questions() {
         method: "POST",
       });
 
-      const data = await res.json();
+      await res.json();
 
       setCard(null);
       setWaiting(false);
@@ -115,11 +102,11 @@ function Questions() {
           </div>
         )}
 
-        {feedback && (
+        {/* {feedback && (
           <div className="text-center text-green-600 mb-4">
             {feedback}
           </div>
-        )}
+        )} */}
 
         {card && card.question ? (
           <div className="bg-white shadow-md rounded-xl p-6 transition-all">
