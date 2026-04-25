@@ -7,7 +7,7 @@ function Upload() {
   const [loading, setLoading] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const navigate = useNavigate();
-  const BACKEND_URL = "https://flashcard-engine-5zbb.onrender.com";
+  const BACKEND_URL = "https://flashcard-engine-lxyx.onrender.com";
 
   const handleUpload = async () => {
     if (!file) return;

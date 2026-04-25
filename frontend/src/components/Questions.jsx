@@ -12,7 +12,7 @@ function Questions() {
 
   const navigate = useNavigate();
 
-  const BACKEND_URL = "https://flashcard-engine-5zbb.onrender.com";
+  const BACKEND_URL = "https://flashcard-engine-lxyx.onrender.com";
 
   const loadCard = async () => {
     setLoading(true);
